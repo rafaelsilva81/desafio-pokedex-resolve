@@ -9,7 +9,7 @@ module.exports = {
         bug: "#A8B820",
         dark: "#705848",
         dragon: "#7038F8",
-        electric: "#F8D030",
+        electric: "#ecbf08",
         fairy: "#EE99AC",
         fighting: "#C03028",
         fire: "#F08030",

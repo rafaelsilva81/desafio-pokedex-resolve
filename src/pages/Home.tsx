@@ -1,25 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import Header from "../components/Header";
 import PokemonCard from "../components/PokemonCard";
 
 const Home = () => {
-  let params = useParams();
   const [page, setPage] = React.useState(1);
+
+  useEffect(() => {
+    function handleScroll() {
+      if (
+        window.innerHeight + document.documentElement.scrollTop !==
+        document.documentElement.offsetHeight
+      )
+        return;
+      setPage((prev) => (prev < 35 ? prev + 1 : prev)); //Max pokemon is 1118, prevent infinite scroll
+    }
+
+    window.addEventListener("scroll", handleScroll);
+  });
 
   return (
     <>
       <Header />
 
-      {/* 
-        Map over the pokemon array and render a card for each pokemon
-        It should render 30 cards, when the user scrolls to the bottom of the page, it should load the next 30 cards
-        The cards should contain the pokemon's name, image, type and id
-      */}
-
       <main className="px-16 py-8 grid grid-cols-6 gap-8">
-        {Array.from({ length: 30 }, (_, index) => {
-          console.log(index);
+        {Array.from({ length: 30 * page }, (_, index) => {
           return <PokemonCard key={index} id={index + 1} />;
         })}
       </main>

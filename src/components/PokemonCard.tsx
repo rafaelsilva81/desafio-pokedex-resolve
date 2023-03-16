@@ -1,50 +1,91 @@
 import { useQuery } from "@tanstack/react-query";
 import { useAtom } from "jotai/react";
-import React from "react";
+import React, { useRef } from "react";
 import api from "../utils/api";
-import { pokeColorsAtom, pokeColorsGradientAtom } from "../utils/atoms";
+import { pokeColorsAtom } from "../utils/atoms";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import usePokemonData from "../hooks/getPokemonData";
 
 const PokemonCard = ({ id }: { id: number }) => {
-  const pokemonDataQuery = useQuery({
-    queryKey: ["pokemon_data", id],
-    queryFn: async () => {
-      return await api.get(`/pokemon/${id}`).then((res) => res.data);
-    },
-  });
+  const navigate = useNavigate();
+  const { data, isLoading, error } = usePokemonData(id);
 
-  const [color, setColors] = useAtom(pokeColorsAtom);
+  const [color, _] = useAtom(pokeColorsAtom);
 
-  console.log(color);
+  if (isLoading) {
+    return <PokemonCardSkeleton />;
+  }
+
+  if (!data || error) return <PokemonCardSkeleton />;
 
   return (
-    <div
-      className="rounded-lg shadow-lg px-6 py-4 cursor-pointer"
-      style={{
-        // @ts-ignore
-        // TODO: Typing this properly
-        backgroundColor: color[pokemonDataQuery.data?.types[0].type.name],
+    <motion.div
+      whileHover={{
+        scale: 1.05,
+      }}
+      whileTap={{
+        scale: 0.97,
+      }}
+      animate={{
+        // fade in
+        opacity: [0, 1],
+        // time
+        transition: {
+          duration: 1,
+          ease: "easeInOut",
+        },
+      }}
+      onClick={() => {
+        navigate(`/pokemon/${id}`);
       }}
     >
-      <div className="flex flex-col gap-3 items-center">
-        <img
-          src={
-            pokemonDataQuery.data?.sprites.other["official-artwork"]
-              .front_default
-          }
-          className="w-32 bg-white p-2 rounded-full"
-        />
+      <div
+        className="rounded-lg shadow-lg py-4 cursor-pointer"
+        style={{
+          // @ts-ignore
+          // TODO: Typing this properly
+          backgroundColor: color[data.types[0].type.name],
+        }}
+      >
+        <div className="flex flex-col gap-3 items-center justify-center">
+          <div
+            className="bg-[url('./pokeball.svg')] rounded-full bg-blend-soft-light bg-repeat-space border-2 mx-4 my-2"
+            style={{
+              // @ts-ignore
+              // TODO: Typing this properly
+              backgroundColor: color[data.types[0].type.name],
+              backgroundSize: "14%",
+            }}
+          >
+            <img
+              src={data.sprites.other["official-artwork"].front_default}
+              className="w-48"
+            />
+          </div>
 
-        <div className="flex flex-col items-center gap-1">
-          <span className="bg-gray-800/30 rounded-lg text-white text-sm px-2 py-1">
-            #{pokemonDataQuery.data?.id}
-          </span>
-          <h2 className="text-white text-2xl font-semibold capitalize">
-            {pokemonDataQuery.data?.name}
-          </h2>
+          <div className="flex items-center gap-2 bg-gray-800/30 w-full p-1 justify-center">
+            <h2 className="text-white text-xl capitalize font-semibold">
+              {data?.name}
+            </h2>
+
+            <span className="bg-primary rounded-lg text-white text-xs px-2 py-1 font-semibold">
+              #{data?.id}
+            </span>
+          </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
+const PokemonCardSkeleton = () => {
+  return (
+    <div
+      className="rounded-lg shadow-lg py-4 cursor-pointer h-64
+      bg-gray-500/30 animate-pulse
+    "
+    ></div>
+  );
+};
 export default PokemonCard;
