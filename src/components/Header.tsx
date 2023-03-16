@@ -19,7 +19,7 @@ const Header = () => {
             />
             <button
               type="submit"
-              className="flex gap-2 items-center hover:text-red-500"
+              className="flex gap-2 items-center text-primary"
             >
               <FaSearch />
             </button>
