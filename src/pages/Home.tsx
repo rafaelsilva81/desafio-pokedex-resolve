@@ -17,14 +17,12 @@ const Home = () => {
         The cards should contain the pokemon's name, image, type and id
       */}
 
-      {Array.from({ length: 30 }, (_, index) => {
-        console.log(index);
-        return (
-          <div key={index}>
-            <PokemonCard id={index + 1} />
-          </div>
-        );
-      })}
+      <main className="p-8 grid grid-cols-3 gap-4 w-full">
+        {Array.from({ length: 30 }, (_, index) => {
+          console.log(index);
+          return <PokemonCard key={index} id={index + 1} />;
+        })}
+      </main>
     </>
   );
 };
