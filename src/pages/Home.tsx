@@ -1,19 +1,14 @@
 import React from "react";
-import { useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
+import Header from "../components/Header";
 
-const Home = () => {
-  // get query params
-  const params = new URLSearchParams(window.location.search);
-  const [search, setSearch] = useSearchParams();
-
-  console.log(params);
-
-  console.log(search);
+const Home = (props: any) => {
+  let params = useParams();
 
   return (
-    <div>
-      <h1>Home</h1>
-    </div>
+    <>
+      <Header />
+    </>
   );
 };
 

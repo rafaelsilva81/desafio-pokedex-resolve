@@ -17,7 +17,7 @@ const queryClient = new QueryClient();
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Home />}>
-      <Route path="/:id" element={<Home />} />
+      <Route path="/pokemon/:id" element={<Home />} />
       {/* ... etc. */}
     </Route>
   )
