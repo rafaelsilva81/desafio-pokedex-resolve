@@ -17,7 +17,7 @@ const Home = () => {
         The cards should contain the pokemon's name, image, type and id
       */}
 
-      <main className="p-8 grid grid-cols-3 gap-4 w-full">
+      <main className="px-16 py-8 grid grid-cols-6 gap-8">
         {Array.from({ length: 30 }, (_, index) => {
           console.log(index);
           return <PokemonCard key={index} id={index + 1} />;

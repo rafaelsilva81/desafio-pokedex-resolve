@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useAtom } from "jotai/react";
 import React from "react";
 import api from "../utils/api";
-import { pokeColorsAtom } from "../utils/atoms";
+import { pokeColorsAtom, pokeColorsGradientAtom } from "../utils/atoms";
 
 const PokemonCard = ({ id }: { id: number }) => {
   const pokemonDataQuery = useQuery({
@@ -14,38 +14,33 @@ const PokemonCard = ({ id }: { id: number }) => {
 
   const [color, setColors] = useAtom(pokeColorsAtom);
 
-  console.log(pokemonDataQuery.data);
+  console.log(color);
+
   return (
     <div
-      className="bg-[url('./pokeball.svg')] rounded-lg shadow-lg p-4 bg-no-repeat bg-contain bg-left-top"
+      className="rounded-lg shadow-lg px-6 py-4 cursor-pointer"
       style={{
         // @ts-ignore
         // TODO: Typing this properly
         backgroundColor: color[pokemonDataQuery.data?.types[0].type.name],
       }}
     >
-      <div className="flex justify-between items-center">
-        <div className="flex items-center gap-2">
-          <img
-            src={
-              pokemonDataQuery.data?.sprites.other["official-artwork"]
-                .front_default
-            }
-            className="w-14"
-          />
-          <h1 className="text-2xl font-semibold">
+      <div className="flex flex-col gap-3 items-center">
+        <img
+          src={
+            pokemonDataQuery.data?.sprites.other["official-artwork"]
+              .front_default
+          }
+          className="w-32 bg-white p-2 rounded-full"
+        />
+
+        <div className="flex flex-col items-center gap-1">
+          <span className="bg-gray-800/30 rounded-lg text-white text-sm px-2 py-1">
+            #{pokemonDataQuery.data?.id}
+          </span>
+          <h2 className="text-white text-2xl font-semibold capitalize">
             {pokemonDataQuery.data?.name}
-          </h1>
-        </div>
-        <div className="flex gap-2">
-          {pokemonDataQuery.data?.types.map((type: any) => (
-            <span
-              key={type.type.name}
-              className="text-white text-xs font-semibold bg-gray-500 rounded-lg px-2 py-1 capitalize"
-            >
-              {type.type.name}
-            </span>
-          ))}
+          </h2>
         </div>
       </div>
     </div>

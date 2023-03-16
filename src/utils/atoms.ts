@@ -21,4 +21,6 @@ const pokeColorsAtom = atom({
   water: "#6890F0",
 });
 
-export { pokeColorsAtom };
+const pokeColorsGradientAtom = atom({});
+
+export { pokeColorsAtom, pokeColorsGradientAtom };
