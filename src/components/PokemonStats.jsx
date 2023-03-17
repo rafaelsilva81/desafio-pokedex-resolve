@@ -3,7 +3,7 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 import usePokemonData from "../hooks/usePokemonData";
 
-const PokemonStats = ({ id }: { id: number }) => {
+const PokemonStats = ({ id }) => {
   const { data, isLoading, error } = usePokemonData(id);
 
   if (isLoading) {
@@ -17,7 +17,7 @@ const PokemonStats = ({ id }: { id: number }) => {
       <h1 className="text-white text-2xl font-semibold">Stats</h1>
 
       {/* stat list */}
-      {data.stats.map((stat: any, index: number) => {
+      {data.stats.map((stat, index) => {
         const statPercent = (stat.base_stat / 255) * 100;
         return (
           <div className="flex flex-col" key={index}>

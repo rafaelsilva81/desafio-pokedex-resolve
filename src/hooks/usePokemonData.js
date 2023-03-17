@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import api from "../utils/api";
 
-const usePokemonData = (id: number) =>
+const usePokemonData = (id) =>
   useQuery({
     queryKey: ["pokemon_data", id],
     queryFn: async () => {

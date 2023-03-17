@@ -3,7 +3,7 @@ import React from "react";
 import usePokemonSpecies from "../hooks/usePokemonSpecies";
 import { Navigate } from "react-router-dom";
 
-const PokemonOtherData = ({ id }: { id: number }) => {
+const PokemonOtherData = ({ id }) => {
   const { data, isLoading, error } = usePokemonSpecies(id);
 
   if (isLoading) {
@@ -38,9 +38,9 @@ const PokemonOtherData = ({ id }: { id: number }) => {
       <div className="md:w-1/3 flex flex-col gap-2 bg-gray-800 rounded-lg p-4 self-stretch">
         <h1 className="text-white text-2xl font-semibold">Egg Groups</h1>
         <div className="flex gap-2">
-          {data.egg_groups.map((eggGroup: any, index: number) => {
+          {data.egg_groups.map((eggGroup, index) => {
             return (
-              <div className="text-white font-semibold capitalize">
+              <div className="text-white font-semibold capitalize" key={index}>
                 {eggGroup.name.replace("-", "") + "."}
               </div>
             );

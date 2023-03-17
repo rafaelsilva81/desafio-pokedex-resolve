@@ -6,7 +6,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { FaChevronLeft } from "react-icons/fa";
 import usePokemonSpecies from "../hooks/usePokemonSpecies";
 
-const PokemonDetailHeader = ({ id }: { id: number }) => {
+const PokemonDetailHeader = ({ id }) => {
   const { data, error, isLoading } = usePokemonData(id);
   const navigate = useNavigate();
   const { data: speciesData, isLoading: isLoadingSpecies } =

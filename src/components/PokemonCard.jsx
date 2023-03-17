@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import usePokemonData from "../hooks/usePokemonData";
 
-const PokemonCard = ({ id }: { id: number }) => {
+const PokemonCard = ({ id }) => {
   const navigate = useNavigate();
   const { data, isLoading, error } = usePokemonData(id);
 

@@ -2,7 +2,7 @@ import React from "react";
 import usePokemonData from "../hooks/usePokemonData";
 import { Navigate } from "react-router-dom";
 
-const PokemonMoves = ({ id }: { id: number }) => {
+const PokemonMoves = ({ id }) => {
   const { data, isLoading, error } = usePokemonData(id);
 
   if (isLoading) {
@@ -24,7 +24,7 @@ const PokemonMoves = ({ id }: { id: number }) => {
       */}
       <div>
         <div className="h-full grid grid-cols-4 gap-2">
-          {data.moves.map((move: any, index: number) => {
+          {data.moves.map((move, index) => {
             return (
               <div
                 className="flex justify-between items-center bg-gray-700 rounded-lg p-2"
