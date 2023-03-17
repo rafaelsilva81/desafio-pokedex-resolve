@@ -21,7 +21,7 @@ const PokemonDetailHeader = ({ id }) => {
 
   return (
     <header
-      className="flex justify-between md:h-[38%] items-center w-full border-b-4 border-primary md:p-0 p-2"
+      className="flex justify-between md:h-[38%] items-center w-full border-b-4 border-primary md:px-8 md:py-0 p-2"
       style={{
         //@ts-ignore
         backgroundColor: color[data?.types[0].type.name],

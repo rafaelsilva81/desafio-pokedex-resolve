@@ -18,9 +18,14 @@ const queryClient = new QueryClient();
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" errorElement={<ErrorDefault />}>
-      <Route path="/pokemon/:id" element={<PokemonDetails />} />
-    </Route>
+    <>
+      <Route path="/" element={<Home />} errorElement={<ErrorDefault />} />
+      <Route
+        path="pokemon/:id"
+        element={<PokemonDetails />}
+        errorElement={<ErrorDefault />}
+      />
+    </>
   )
 );
 
