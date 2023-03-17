@@ -5,7 +5,7 @@ import api from "../utils/api";
 import { pokeColorsAtom } from "../utils/atoms";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import usePokemonData from "../hooks/getPokemonData";
+import usePokemonData from "../hooks/usePokemonData";
 
 const PokemonCard = ({ id }: { id: number }) => {
   const navigate = useNavigate();
@@ -65,7 +65,7 @@ const PokemonCard = ({ id }: { id: number }) => {
           </div>
 
           <div className="flex items-center gap-2 bg-gray-800/30 w-full p-1 justify-center">
-            <h2 className="text-white text-xl capitalize font-semibold">
+            <h2 className="text-white text-xl capitalize font-semibold drop-shadow-md">
               {data?.name}
             </h2>
 

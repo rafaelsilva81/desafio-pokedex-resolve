@@ -3,12 +3,14 @@ import api from "../utils/api";
 
 const usePokemonData = (id: number) =>
   useQuery({
-    queryKey: ["pokemon", id],
+    queryKey: ["pokemon_data", id],
     queryFn: async () => {
-      return await api.get(`/pokemon/${id}`).then((res) => res.data);
+      const data = await api.get(`/pokemon/${id}`).then((res) => res.data);
+      return data;
     },
-    refetchOnMount: false,
     refetchOnWindowFocus: false,
+    refetchInterval: 1000 * 60 * 60 * 24, // 24 hours
+    refetchOnMount: false,
     refetchOnReconnect: false,
   });
 
