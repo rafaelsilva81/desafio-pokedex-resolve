@@ -2,6 +2,7 @@ import clsx from "clsx";
 import React from "react";
 import usePokemonSpecies from "../hooks/usePokemonSpecies";
 import { Navigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const PokemonOtherData = ({ id }) => {
   const { data, isLoading, error } = usePokemonSpecies(id);
@@ -15,7 +16,13 @@ const PokemonOtherData = ({ id }) => {
   const captureRatePercent = (data.capture_rate / 255) * 100;
 
   return (
-    <div className="flex md:flex-row flex-col gap-2 md:items-center h-full">
+    <motion.div
+      className="flex md:flex-row flex-col gap-2 md:items-center h-full"
+      animate={{
+        opacity: [0, 1],
+        y: [30, 0],
+      }}
+    >
       {/* capture rate */}
       <div className="md:w-1/3 flex justify-center flex-col gap-2 bg-gray-800 rounded-lg p-4 self-stretch">
         <h1 className="text-white text-2xl font-semibold">Capture Rate</h1>
@@ -55,7 +62,7 @@ const PokemonOtherData = ({ id }) => {
           {data.generation.name.replace("-", " ")}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

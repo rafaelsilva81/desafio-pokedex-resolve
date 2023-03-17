@@ -2,9 +2,10 @@ import React from "react";
 import usePokemonData from "../hooks/usePokemonData";
 import { pokeColorsAtom } from "../utils/atoms";
 import { useAtom } from "jotai";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FaChevronLeft } from "react-icons/fa";
 import usePokemonSpecies from "../hooks/usePokemonSpecies";
+import { motion } from "framer-motion";
 
 const PokemonDetailHeader = ({ id }) => {
   const { data, error, isLoading } = usePokemonData(id);
@@ -27,10 +28,16 @@ const PokemonDetailHeader = ({ id }) => {
       }}
     >
       {/* data */}
-      <div className="flex flex-col items-start flex-1 justify-start px-8 py-3 gap-3">
+      <motion.div
+        className="flex flex-col items-start flex-1 justify-start px-8 py-3 gap-3"
+        animate={{
+          // fade in
+          opacity: [0, 1],
+        }}
+      >
         {/* go back btn */}
         <button
-          className="flex items-center gap-2 text-white px-2 py-1 hover:bg-neutral-200/20 rounded-lg"
+          className="flex items-center gap-2 text-white px-2 py-1 hover:bg-neutral-500/30 rounded-lg"
           onClick={() => {
             navigate("/");
           }}
@@ -64,13 +71,17 @@ const PokemonDetailHeader = ({ id }) => {
             {data?.weight / 10} kg
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* image */}
-      <img
+      <motion.img
         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
         alt={data?.name}
         className="w-1/4 h-full md:object-cover"
+        animate={{
+          // fade in
+          opacity: [0, 1],
+        }}
       />
     </header>
   );

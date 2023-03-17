@@ -1,6 +1,7 @@
 import React from "react";
 import usePokemonData from "../hooks/usePokemonData";
 import { Navigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const PokemonMoves = ({ id }) => {
   const { data, isLoading, error } = usePokemonData(id);
@@ -12,7 +13,13 @@ const PokemonMoves = ({ id }) => {
   if (!data || error) return <Navigate to="/" />;
 
   return (
-    <div className="gap-2 bg-gray-800 rounded-lg p-4 h-full max-h-full overflow-y-auto">
+    <motion.div
+      className="gap-2 bg-gray-800 rounded-lg p-4 h-full max-h-full overflow-y-auto"
+      animate={{
+        opacity: [0, 1],
+        y: [30, 0],
+      }}
+    >
       <h1 className="text-white text-2xl font-semibold mb-4">
         Learnable Moves
       </h1>
@@ -38,7 +45,7 @@ const PokemonMoves = ({ id }) => {
           })}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

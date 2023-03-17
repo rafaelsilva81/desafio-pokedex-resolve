@@ -1,5 +1,6 @@
 import { Navigate } from "react-router-dom";
 import usePokemonData from "../hooks/usePokemonData";
+import { motion } from "framer-motion";
 
 const PokemonAbilities = ({ id }) => {
   const { data, isLoading, error } = usePokemonData(id);
@@ -10,7 +11,13 @@ const PokemonAbilities = ({ id }) => {
 
   if (!data || error) return <Navigate to="/" />;
   return (
-    <div className="flex flex-col gap-2 bg-gray-800 rounded-lg p-4">
+    <motion.div
+      className="flex flex-col gap-2 bg-gray-800 rounded-lg p-4"
+      animate={{
+        opacity: [0, 1],
+        y: [30, 0],
+      }}
+    >
       <h1 className="text-white text-2xl font-semibold">Abilities</h1>
       <div className="flex flex-col gap-2">
         {data.abilities.map((ability, index) => {
@@ -26,7 +33,7 @@ const PokemonAbilities = ({ id }) => {
           );
         })}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

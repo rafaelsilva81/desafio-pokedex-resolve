@@ -2,6 +2,7 @@ import clsx from "clsx";
 import React from "react";
 import { Navigate } from "react-router-dom";
 import usePokemonData from "../hooks/usePokemonData";
+import { motion } from "framer-motion";
 
 const PokemonStats = ({ id }) => {
   const { data, isLoading, error } = usePokemonData(id);
@@ -13,7 +14,13 @@ const PokemonStats = ({ id }) => {
   if (!data || error) return <Navigate to="/" />;
 
   return (
-    <div className="flex flex-col gap-3 shadow-md bg-gray-800 rounded-lg p-4">
+    <motion.div
+      className="flex flex-col gap-3 shadow-md bg-gray-800 rounded-lg p-4"
+      animate={{
+        opacity: [0, 1],
+        y: [30, 0],
+      }}
+    >
       <h1 className="text-white text-2xl font-semibold">Stats</h1>
 
       {/* stat list */}
@@ -42,7 +49,7 @@ const PokemonStats = ({ id }) => {
           </div>
         );
       })}
-    </div>
+    </motion.div>
   );
 };
 
