@@ -50,7 +50,7 @@ const PokemonCard = ({ id }) => {
       >
         <div className="flex flex-col gap-3 items-center justify-center">
           <div
-            className="bg-[url('./pokeball.svg')] rounded-full bg-blend-soft-light bg-repeat-space border-2 mx-4 my-2"
+            className="bg-[url('/pokeball.svg')] rounded-full bg-blend-soft-light bg-repeat-space border-2 mx-4 my-2"
             style={{
               // @ts-ignore
               // TODO: Typing this properly
