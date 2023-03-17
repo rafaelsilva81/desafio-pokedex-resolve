@@ -9,17 +9,18 @@ const Header = () => {
         <img src={logo} className="w-8" />
         <h1 className="text-white text-3xl font-semibold">Pokédex</h1>
       </div>
-      <form className="flex items-center">
-        <div className="bg-white p-1 flex gap-2 items-center rounded-lg focus:outline-none">
-          <input type="text" placeholder="Search Pokemon" className="bg-none" />
-          <button
-            type="submit"
-            className="flex gap-2 items-center bg-primary p-2 text-white rounded-lg hover:text-gray-800/60"
-          >
-            <FaSearch />
-          </button>
-        </div>
-      </form>
+
+      <div className="text-white flex items-center gap-1">
+        Developed by{" "}
+        <a
+          href="https://github.com/rafaelsilva81"
+          target="_blank"
+          rel="noreferrer"
+          className="font-semibold hover:text-gray-800/80"
+        >
+          Rafael Silva
+        </a>
+      </div>
     </header>
   );
 };

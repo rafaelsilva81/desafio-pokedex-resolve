@@ -12,15 +12,15 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home";
 import PokemonDetails from "./pages/PokemonDetails";
+import ErrorDefault from "./components/ErrorDefault";
 
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <>
-      <Route path="/" element={<Home />} />,
+    <Route path="/" errorElement={<ErrorDefault />}>
       <Route path="/pokemon/:id" element={<PokemonDetails />} />
-    </>
+    </Route>
   )
 );
 
