@@ -23,7 +23,7 @@ const Home = () => {
     <>
       <Header />
 
-      <main className="px-16 py-8 grid grid-cols-6 gap-8">
+      <main className="p-4 md:px-16 md:py-8 grid grid-cols-2 md:grid-cols-6 gap-8">
         {Array.from({ length: 30 * page }, (_, index) => {
           return <PokemonCard key={index} id={index + 1} />;
         })}

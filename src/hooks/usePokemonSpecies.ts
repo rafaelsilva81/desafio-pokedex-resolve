@@ -12,6 +12,9 @@ const usePokemonSpecies = (id: number) =>
     },
     refetchOnWindowFocus: false,
     refetchInterval: 1000 * 60 * 60 * 24 * 30, // 30 days
+    refetchOnMount: false,
+    refetchOnReconnect: false,
+    staleTime: 1000 * 60 * 60 * 24 * 30, // 30 days
   });
 
 export default usePokemonSpecies;

@@ -20,7 +20,7 @@ const PokemonDetailHeader = ({ id }: { id: number }) => {
 
   return (
     <header
-      className="flex justify-between md:h-[40%] items-center w-full border-b-4 border-primary md:p-0 p-2"
+      className="flex justify-between md:h-[38%] items-center w-full border-b-4 border-primary md:p-0 p-2"
       style={{
         //@ts-ignore
         backgroundColor: color[data?.types[0].type.name],
@@ -46,7 +46,7 @@ const PokemonDetailHeader = ({ id }: { id: number }) => {
 
         {/* flavor text */}
         <p className="text-white text-xl md:block hidden text-ellipsis text-start">
-          {speciesData?.flavor_text_entries[0].flavor_text}
+          {speciesData?.flavor_text_entries[1].flavor_text}
         </p>
 
         <div className="flex gap-2 items-center font-semibold">
@@ -78,7 +78,7 @@ const PokemonDetailHeader = ({ id }: { id: number }) => {
 
 const DetailHeaderSkeleton = () => {
   return (
-    <header className="flex justify-between md:h-[40%] items-center w-full md:p-0 p-2 bg-gray-500 animate-pulse"></header>
+    <header className="flex justify-between md:h-[40%] items-center w-full md:p-0 p-2 bg-gray-300 animate-pulse"></header>
   );
 };
 

@@ -59,13 +59,13 @@ const PokemonCard = ({ id }: { id: number }) => {
             }}
           >
             <img
-              src={data.sprites.other["official-artwork"].front_default}
+              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
               className="w-48"
             />
           </div>
 
-          <div className="flex items-center gap-2 bg-gray-800/30 w-full p-1 justify-center">
-            <h2 className="text-white text-xl capitalize font-semibold drop-shadow-md">
+          <div className="flex flex-wrap items-center gap-2 bg-gray-800/30 w-full p-1 justify-center">
+            <h2 className="text-white text-sm md:text-xl capitalize font-semibold drop-shadow-md">
               {data?.name}
             </h2>
 
